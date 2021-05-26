@@ -8,10 +8,12 @@ namespace ScannerRoomBeacons  // This is usually the name of your mod.
     [HarmonyPatch]
     internal class MapRoomFunctionality_UpdateCameraBlips_Patch
     {
-        /* Using the setup for beaconBlipRoot and beaconBlips here makes scanner map blips disappear earlier than wanted.
-         * As in the blip shows up, disappears for a while (varies depending on if a resource scan is going or not), then comes back.
-         * How long it shows depends as well on... something, idk yet. 
-         * Probably has something to do with not caching or.. something..
+        /* When beaconBlipRoot and beaconBlips is on the Outside of UpdateBeaconBlips: 
+	     - The blips showup and disappear
+	     - This appears dependent on a scan running or not almost? As in if you load in and a scan is running... the beacon blips never appear.
+	     - Otherwise they appear for a few seconds and then disappear continually.
+         - How long it shows depends as well on... something, idk yet. 
+         - Probably has something to do with not caching or.. something..
          */
 
         public static GameObject beaconBlipRoot;
@@ -25,9 +27,9 @@ namespace ScannerRoomBeacons  // This is usually the name of your mod.
         [HarmonyPostfix]
         private static void UpdateBeaconBlips(MapRoomFunctionality __instance)
         {
-            /* Using this setup for beaconBlipRoot and beaconBlips makes scanner map blips NEVER disappear.
-             * As in the blips keep stacking each update.
-             * Forever. Every few seconds. Probably based off when the scan updates.
+            /* When beaconBlipRoot and beaconBlips is on the Inside of UpdateBeaconBlips:
+             - The blips showup and never stop stacking: blips NEVER disappear.
+             - Each update they just stack and stack causing the "blip" to appear brighter and bigger.
              */
             //GameObject beaconBlipRoot = new GameObject("BeaconBlipRoot");
             //List<GameObject> beaconBlips = new List<GameObject>();

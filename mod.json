@@ -1,0 +1,11 @@
+{
+  "Id": "ScannerRoomBeacons",
+  "DisplayName": "Scanner Room Beacons",
+  "Author": "Magix39",
+  "Version": "1.0.0",
+  "Requires": [ ],
+  "Enable": true,
+  "AssemblyName": "ScannerRoomBeacons_BbrOutside.dll",
+  "EntryMethod": "ScannerRoomBeacons.MainPatcher.Patch",
+  "Config": {}
+}
